@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.jdt.annotation.NonNull;
+import org.openhab.binding.isy.config.IsySceneConfiguration;
+import org.openhab.binding.isy.internal.protocol.Property;
 import org.openhab.core.library.types.OnOffType;
 import org.openhab.core.thing.Channel;
 import org.openhab.core.thing.ChannelUID;
@@ -14,8 +16,6 @@ import org.openhab.core.thing.ThingStatusDetail;
 import org.openhab.core.thing.ThingStatusInfo;
 import org.openhab.core.types.Command;
 import org.openhab.core.types.RefreshType;
-import org.openhab.binding.isy.config.IsySceneConfiguration;
-import org.openhab.binding.isy.internal.protocol.Property;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -228,5 +228,4 @@ public class SceneHandler extends AbtractIsyThingHandler {
         this.linkStates.clear();
         super.dispose();
     }
-
 }

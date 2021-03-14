@@ -11,6 +11,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.jdt.annotation.NonNull;
+import org.openhab.binding.isy.config.IsyInsteonDeviceConfiguration;
+import org.openhab.binding.isy.internal.NodeAddress;
+import org.openhab.binding.isy.internal.OHIsyClient;
+import org.openhab.binding.isy.internal.protocol.Property;
 import org.openhab.core.library.types.OnOffType;
 import org.openhab.core.library.types.PercentType;
 import org.openhab.core.library.types.StringType;
@@ -22,10 +26,6 @@ import org.openhab.core.thing.ThingStatusInfo;
 import org.openhab.core.types.Command;
 import org.openhab.core.types.RefreshType;
 import org.openhab.core.types.State;
-import org.openhab.binding.isy.config.IsyInsteonDeviceConfiguration;
-import org.openhab.binding.isy.internal.NodeAddress;
-import org.openhab.binding.isy.internal.OHIsyClient;
-import org.openhab.binding.isy.internal.protocol.Property;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -193,7 +193,5 @@ public class IsyDeviceHandler extends AbtractIsyThingHandler {
             returnValue = OnOffType.OFF;
         }
         return returnValue;
-
     }
-
 }

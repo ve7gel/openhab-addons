@@ -124,5 +124,4 @@ public class IsyBindingConstants {
     public final static String CHANNEL_VENSTAR_COOLCONTROL = "venstar_coolcontrol";
     public final static String CHANNEL_VENSTAR_HEATCONTROL = "venstar_heatcontrol";
     public final static String CHANNEL_VENSTAR_FANCONTROL = "venstar_fancontrol";
-
 }

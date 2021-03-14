@@ -18,5 +18,4 @@ public class Areas {
     public void setAreas(List<Area> areas) {
         this.areas = areas;
     }
-
 }

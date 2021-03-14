@@ -24,5 +24,4 @@ public class Properties {
     public void setProperties(List<Property> properties) {
         this.properties = properties;
     }
-
 }

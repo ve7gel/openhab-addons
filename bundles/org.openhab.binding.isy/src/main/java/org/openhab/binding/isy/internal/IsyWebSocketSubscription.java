@@ -40,7 +40,6 @@ public class IsyWebSocketSubscription {
             client = null;
 
         }
-
     }
 
     public void connect() {
@@ -51,20 +50,17 @@ public class IsyWebSocketSubscription {
             @Override
             public void onWebSocketText(String arg0) {
                 parseXml(arg0);
-
             }
 
             @Override
             public void onWebSocketError(Throwable arg0) {
                 logger.error("Error with websocket communication", arg0);
-
             }
 
             @Override
             public void onWebSocketConnect(Session arg0) {
                 logger.debug("Socket Connected: " + arg0);
                 listener.onDeviceOnLine();
-
             }
 
             @Override
@@ -81,7 +77,6 @@ public class IsyWebSocketSubscription {
                     future.cancel(true);
                 }
                 connect();
-
             }
 
             @Override
@@ -104,7 +99,6 @@ public class IsyWebSocketSubscription {
         } catch (Exception e) {
             logger.error("Error establishing websocket subscription", e);
         }
-
     }
 
     private void parseXml(String message) {

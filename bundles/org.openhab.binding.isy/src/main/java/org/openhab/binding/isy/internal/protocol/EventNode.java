@@ -54,5 +54,4 @@ public class EventNode {
         // result.setDevtype(this.getType());
         return result;
     }
-
 }

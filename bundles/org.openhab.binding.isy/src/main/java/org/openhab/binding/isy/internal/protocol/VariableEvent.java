@@ -43,5 +43,4 @@ public class VariableEvent {
     public String toString() {
         return "VariableEvent [type=" + type + ", id=" + id + ", val=" + val + "]";
     }
-
 }

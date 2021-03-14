@@ -6,5 +6,4 @@ public class IsyInsteonDeviceConfiguration {
     public static final String DEVICEID = "deviceid";
     public String address;
     public String name;
-
 }

@@ -12,5 +12,4 @@ public class IsyVariableConfiguration {
     public String toString() {
         return "[IsyVariableConfiguration] id: " + id + ", type: " + type;
     }
-
 }

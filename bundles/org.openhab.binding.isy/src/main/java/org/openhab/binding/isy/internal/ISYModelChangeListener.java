@@ -40,5 +40,4 @@ public interface ISYModelChangeListener {
     public void onSceneRenamed(Event event);
 
     public void onVariableChanged(VariableEvent event);
-
 }

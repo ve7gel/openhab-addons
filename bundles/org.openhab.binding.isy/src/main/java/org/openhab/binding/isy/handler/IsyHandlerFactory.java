@@ -14,6 +14,8 @@ import java.util.Hashtable;
 import java.util.Map;
 import java.util.Set;
 
+import org.openhab.binding.isy.discovery.IsyRestDiscoveryService;
+import org.openhab.binding.isy.handler.special.VenstarThermostatDeviceHandler;
 import org.openhab.core.config.discovery.DiscoveryService;
 import org.openhab.core.thing.Bridge;
 import org.openhab.core.thing.Thing;
@@ -21,8 +23,6 @@ import org.openhab.core.thing.ThingTypeUID;
 import org.openhab.core.thing.ThingUID;
 import org.openhab.core.thing.binding.BaseThingHandlerFactory;
 import org.openhab.core.thing.binding.ThingHandler;
-import org.openhab.binding.isy.discovery.IsyRestDiscoveryService;
-import org.openhab.binding.isy.handler.special.VenstarThermostatDeviceHandler;
 import org.osgi.framework.ServiceRegistration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -167,5 +167,4 @@ public class IsyHandlerFactory extends BaseThingHandlerFactory {
             }
         }
     }
-
 }

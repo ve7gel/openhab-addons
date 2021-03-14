@@ -18,7 +18,6 @@ public class Program {
 
         ProgramCommand(String cmdCode) {
             this._cmdCode = cmdCode;
-
         }
 
         public String getCommandCode() {
@@ -27,7 +26,6 @@ public class Program {
     }
 
     public Program() {
-
     }
 
     public Program(String id, String name) {
@@ -49,5 +47,4 @@ public class Program {
         return new StringBuilder("Isy Program: name=").append(name).append(", id=").append(id).append(", running=")
                 .append(running).toString();
     }
-
 }

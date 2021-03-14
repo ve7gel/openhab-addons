@@ -1,8 +1,8 @@
 package org.openhab.binding.isy.discovery;
 
+import org.openhab.binding.isy.IsyBindingConstants;
 import org.openhab.core.config.discovery.AbstractDiscoveryService;
 import org.openhab.core.thing.ThingTypeUID;
-import org.openhab.binding.isy.IsyBindingConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,7 +19,5 @@ public class IsyBridgeDiscoveryService extends AbstractDiscoveryService {
     @Override
     protected void startScan() {
         logger.debug("start scan called for isy bridge");
-
     }
-
 }

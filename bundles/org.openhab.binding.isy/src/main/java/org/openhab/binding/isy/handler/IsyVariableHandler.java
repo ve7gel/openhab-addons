@@ -1,16 +1,16 @@
 package org.openhab.binding.isy.handler;
 
+import org.openhab.binding.isy.IsyBindingConstants;
+import org.openhab.binding.isy.config.IsyVariableConfiguration;
+import org.openhab.binding.isy.internal.OHIsyClient;
+import org.openhab.binding.isy.internal.VariableType;
+import org.openhab.binding.isy.internal.protocol.VariableEvent;
 import org.openhab.core.library.types.DecimalType;
 import org.openhab.core.thing.ChannelUID;
 import org.openhab.core.thing.Thing;
 import org.openhab.core.thing.ThingStatus;
 import org.openhab.core.types.Command;
 import org.openhab.core.types.RefreshType;
-import org.openhab.binding.isy.IsyBindingConstants;
-import org.openhab.binding.isy.config.IsyVariableConfiguration;
-import org.openhab.binding.isy.internal.OHIsyClient;
-import org.openhab.binding.isy.internal.VariableType;
-import org.openhab.binding.isy.internal.protocol.VariableEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -46,7 +46,6 @@ public class IsyVariableHandler extends AbtractIsyThingHandler {
                 logger.warn("Unsupported command for variable handleCommand: " + command.toFullString());
             }
         }
-
     }
 
     public void handleUpdate(int value) {

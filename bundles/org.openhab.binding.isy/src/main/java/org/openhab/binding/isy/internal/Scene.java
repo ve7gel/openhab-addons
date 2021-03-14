@@ -13,5 +13,4 @@ public class Scene {
         this.address = address;
         this.links = links;
     }
-
 }

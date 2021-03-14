@@ -11,9 +11,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.openhab.binding.isy.internal.Scene;
 import org.openhab.core.thing.ThingUID;
 import org.openhab.core.thing.binding.ThingHandler;
-import org.openhab.binding.isy.internal.Scene;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

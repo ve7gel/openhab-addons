@@ -13,5 +13,4 @@ public class InsteonAddressTest {
         assertEquals(address.toStringPaddedBytes(), "41 EA 06 A");
         assertEquals(address.toString(), "41 EA 6 A");
     }
-
 }

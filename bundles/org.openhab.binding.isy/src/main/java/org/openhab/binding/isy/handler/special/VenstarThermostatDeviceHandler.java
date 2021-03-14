@@ -8,6 +8,14 @@ import static org.openhab.binding.isy.IsyBindingConstants.*;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.openhab.binding.isy.IsyBindingConstants;
+import org.openhab.binding.isy.config.IsyInsteonDeviceConfiguration;
+import org.openhab.binding.isy.handler.IsyBridgeHandler;
+import org.openhab.binding.isy.handler.IsyDeviceHandler;
+import org.openhab.binding.isy.internal.NodeAddress;
+import org.openhab.binding.isy.internal.OHIsyClient;
+import org.openhab.binding.isy.internal.protocol.Properties;
+import org.openhab.binding.isy.internal.protocol.Property;
 import org.openhab.core.library.types.DecimalType;
 import org.openhab.core.library.types.OnOffType;
 import org.openhab.core.library.types.StringType;
@@ -18,14 +26,6 @@ import org.openhab.core.types.Command;
 import org.openhab.core.types.PrimitiveType;
 import org.openhab.core.types.RefreshType;
 import org.openhab.core.types.State;
-import org.openhab.binding.isy.IsyBindingConstants;
-import org.openhab.binding.isy.config.IsyInsteonDeviceConfiguration;
-import org.openhab.binding.isy.handler.IsyBridgeHandler;
-import org.openhab.binding.isy.handler.IsyDeviceHandler;
-import org.openhab.binding.isy.internal.NodeAddress;
-import org.openhab.binding.isy.internal.OHIsyClient;
-import org.openhab.binding.isy.internal.protocol.Properties;
-import org.openhab.binding.isy.internal.protocol.Property;
 
 /**
  * @author thomas hentschel

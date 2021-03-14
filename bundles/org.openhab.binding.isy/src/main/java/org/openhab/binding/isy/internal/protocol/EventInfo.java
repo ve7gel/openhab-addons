@@ -95,5 +95,4 @@ public class EventInfo {
     public void setZoneEvent(ZoneEvent zoneEvent) {
         this.zoneEvent = zoneEvent;
     }
-
 }

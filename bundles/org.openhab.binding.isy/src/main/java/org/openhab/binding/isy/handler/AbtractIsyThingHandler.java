@@ -13,5 +13,4 @@ public abstract class AbtractIsyThingHandler extends BaseThingHandler {
     protected IsyBridgeHandler getBridgeHandler() {
         return (IsyBridgeHandler) getBridge().getHandler();
     }
-
 }

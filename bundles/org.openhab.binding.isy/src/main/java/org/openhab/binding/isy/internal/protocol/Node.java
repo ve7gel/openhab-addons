@@ -101,7 +101,5 @@ public class Node {
         public void setCat(String cat) {
             this.cat = cat;
         }
-
     }
-
 }

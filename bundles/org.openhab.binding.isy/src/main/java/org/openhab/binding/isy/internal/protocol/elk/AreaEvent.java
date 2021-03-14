@@ -43,5 +43,4 @@ public class AreaEvent {
     public String toString() {
         return "AreaEvent [type=" + type + ", area=" + area + ", val=" + val + "]";
     }
-
 }

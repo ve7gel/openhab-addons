@@ -41,5 +41,4 @@ public class ElkStatus {
     public long getTimestamp() {
         return timestamp;
     }
-
 }

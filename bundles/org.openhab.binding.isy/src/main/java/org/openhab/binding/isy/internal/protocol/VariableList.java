@@ -24,5 +24,4 @@ public class VariableList {
     public void setStateVariables(List<StateVariable> stateVariables) {
         this.stateVariables = stateVariables;
     }
-
 }

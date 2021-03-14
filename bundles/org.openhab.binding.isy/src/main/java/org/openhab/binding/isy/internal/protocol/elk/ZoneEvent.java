@@ -43,5 +43,4 @@ public class ZoneEvent {
     public String toString() {
         return "ZoneEvent [type=" + type + ", zone=" + zone + ", val=" + val + "]";
     }
-
 }

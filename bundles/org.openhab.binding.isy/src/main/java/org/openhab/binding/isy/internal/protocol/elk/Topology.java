@@ -14,5 +14,4 @@ public class Topology {
     public void setAreas(Areas areas) {
         this.areas = areas;
     }
-
 }

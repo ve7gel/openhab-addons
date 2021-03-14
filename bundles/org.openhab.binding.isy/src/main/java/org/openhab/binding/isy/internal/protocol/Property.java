@@ -49,5 +49,4 @@ public class Property {
     public void setUom(String uom) {
         this.uom = uom;
     }
-
 }

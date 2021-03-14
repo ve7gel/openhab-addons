@@ -27,5 +27,4 @@ public class IsyHandlerBuilder {
     public IsyDeviceHandler build() {
         return this.handler;
     }
-
 }

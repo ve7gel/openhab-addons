@@ -56,5 +56,4 @@ public class Nodes {
     public Node getNode(NodeAddress address) {
         return nodeMap != null ? nodeMap.get(address) : null;
     }
-
 }

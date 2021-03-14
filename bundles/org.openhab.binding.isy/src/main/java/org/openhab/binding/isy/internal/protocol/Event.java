@@ -61,5 +61,4 @@ public class Event {
     public void setEventInfo(EventInfo eventInfo) {
         this.eventInfo = eventInfo;
     }
-
 }

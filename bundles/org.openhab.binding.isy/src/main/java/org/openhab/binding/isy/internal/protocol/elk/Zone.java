@@ -38,5 +38,4 @@ public class Zone {
     public void setAlarmDef(int alarmDef) {
         this.alarmDef = alarmDef;
     }
-
 }

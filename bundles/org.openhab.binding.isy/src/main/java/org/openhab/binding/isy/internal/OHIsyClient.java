@@ -41,5 +41,4 @@ public interface OHIsyClient {
     public Properties getNodeProperties(String node);
 
     public VariableEvent getVariableValue(VariableType type, int id);
-
 }
