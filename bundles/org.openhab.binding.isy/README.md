@@ -1,4 +1,4 @@
-# NOTE The latest build can be retrieved from: http://hentschel.github.io
+# OpenHAB 3 Initial Version at https://github.com/dmazan/openhab-addons/tree/isy-binding-3.1.0/bundles/org.openhab.binding.isy
 
 
 # ISY Binding
