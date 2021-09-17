@@ -21,12 +21,15 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
+import org.eclipse.jdt.annotation.Nullable;
 import org.openhab.binding.isy.internal.protocol.NodeInfo;
 import org.openhab.binding.isy.internal.protocol.Properties;
 import org.openhab.binding.isy.internal.protocol.Property;
 import org.openhab.binding.isy.internal.protocol.StateVariable;
 import org.openhab.binding.isy.internal.protocol.VariableEvent;
 import org.openhab.binding.isy.internal.protocol.VariableList;
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
@@ -39,6 +42,10 @@ import com.thoughtworks.xstream.XStream;
 
 public class IsyRestClient implements OHIsyClient {
     private Logger logger = LoggerFactory.getLogger(IsyRestClient.class);
+
+    @Reference(cardinality = ReferenceCardinality.OPTIONAL)
+    private @Nullable ClientBuilder injectedClientBuilder;
+
     public static final String NODES = "nodes";
     public static final String PROGRAMS = "programs";
     public static final String VARIABLES_SET = "vars/set";
@@ -65,11 +72,11 @@ public class IsyRestClient implements OHIsyClient {
     private XStream xStream;
 
     // TODO should support startup, shutdown lifecycle
-    public IsyRestClient(String url, String authHeader, XStream xStream) {
+    public IsyRestClient(String url, String authHeader, XStream xStream, ClientBuilder clientBuilder) {
 
         authorizationHeaderValue = authHeader;
-        this.isyClient = ClientBuilder.newClient();
-        // this.isyClient.register(Variable.class);
+
+        this.isyClient = clientBuilder.build();
         this.isyTarget = isyClient.target("http://" + url + "/rest");
         this.nodesTarget = isyTarget.path(NODES);// .register(NodeResponseInterceptor.class);
         this.programsTarget = isyTarget.path(PROGRAMS);

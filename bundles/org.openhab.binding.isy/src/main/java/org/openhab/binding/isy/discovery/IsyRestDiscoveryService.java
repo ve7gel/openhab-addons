@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ScheduledFuture;
 
+import javax.ws.rs.client.ClientBuilder;
+
 import org.openhab.binding.isy.IsyBindingConstants;
 import org.openhab.binding.isy.config.IsyInsteonDeviceConfiguration;
 import org.openhab.binding.isy.config.IsyProgramConfiguration;
@@ -22,6 +24,7 @@ import org.openhab.core.config.discovery.DiscoveryResult;
 import org.openhab.core.config.discovery.DiscoveryResultBuilder;
 import org.openhab.core.thing.ThingTypeUID;
 import org.openhab.core.thing.ThingUID;
+import org.osgi.service.jaxrs.client.SseEventSourceFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -39,7 +42,8 @@ public class IsyRestDiscoveryService extends AbstractDiscoveryService {
     /**
      * Creates a IsyDiscoveryService.
      */
-    public IsyRestDiscoveryService(IsyBridgeHandler bridgeHandler) {
+    public IsyRestDiscoveryService(IsyBridgeHandler bridgeHandler, ClientBuilder clientBuilder,
+            SseEventSourceFactory eventSourceFactory) {
         super(ImmutableSet.of(new ThingTypeUID(IsyBindingConstants.BINDING_ID, "-")), DISCOVER_TIMEOUT_SECONDS, false);
         this.bridgeHandler = bridgeHandler;
         this.discoveredNodeTypeCache = new HashMap<String, ThingTypeUID>();

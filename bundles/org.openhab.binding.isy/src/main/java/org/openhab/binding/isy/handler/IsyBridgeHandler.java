@@ -8,6 +8,8 @@ import java.util.Set;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
+import javax.ws.rs.client.ClientBuilder;
+
 import org.eclipse.jdt.annotation.Nullable;
 import org.openhab.binding.isy.IsyBindingConstants;
 import org.openhab.binding.isy.config.IsyBridgeConfiguration;
@@ -51,6 +53,7 @@ import org.openhab.core.thing.ThingStatusInfo;
 import org.openhab.core.thing.binding.BaseBridgeHandler;
 import org.openhab.core.thing.binding.ThingHandler;
 import org.openhab.core.types.Command;
+import org.osgi.service.jaxrs.client.SseEventSourceFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -58,11 +61,16 @@ import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.StaxDriver;
 
 public class IsyBridgeHandler extends BaseBridgeHandler implements InsteonClientProvider {
-    private String testXmlVariableUpdate = "<?xml version=\"1.0\"?><Event seqnum=\"1607\" sid=\"uuid:74\"><control>_1</control><action>6</action><node></node><eventInfo><var type=\"2\" id=\"3\"><val>0</val><ts>20170718 09:16:26</ts></var></eventInfo></Event>";
-    private String testXmlNodeUpdate = "<?xml version=\"1.0\"?><Event seqnum=\"1602\" sid=\"uuid:74\"><control>ST</control><action>255</action><node>28 C1 F3 1</node><eventInfo></eventInfo></Event>";
+    // private String testXmlVariableUpdate = "<?xml version=\"1.0\"?><Event seqnum=\"1607\"
+    // sid=\"uuid:74\"><control>_1</control><action>6</action><node></node><eventInfo><var type=\"2\"
+    // id=\"3\"><val>0</val><ts>20170718 09:16:26</ts></var></eventInfo></Event>";
+    // private String testXmlNodeUpdate = "<?xml version=\"1.0\"?><Event seqnum=\"1602\"
+    // sid=\"uuid:74\"><control>ST</control><action>255</action><node>28 C1 F3 1</node><eventInfo></eventInfo></Event>";
     private Logger logger = LoggerFactory.getLogger(IsyBridgeHandler.class);
 
     private IsyRestDiscoveryService bridgeDiscoveryService;
+
+    private ClientBuilder clientBuilder;
 
     private IsyRestClient isyClient;
 
@@ -75,7 +83,7 @@ public class IsyBridgeHandler extends BaseBridgeHandler implements InsteonClient
     private DeviceToSceneMapper sceneMapper;
     private ScheduledFuture<?> discoverTask = null;
 
-    public IsyBridgeHandler(Bridge bridge) {
+    public IsyBridgeHandler(Bridge bridge, ClientBuilder clientBuilder, SseEventSourceFactory eventSourceFactory) {
         super(bridge);
 
         xStream = new XStream(new StaxDriver());
@@ -86,6 +94,7 @@ public class IsyBridgeHandler extends BaseBridgeHandler implements InsteonClient
                 VariableEvent.class, SubscriptionResponse.class, Topology.class, Zone.class, ElkStatus.class,
                 Areas.class, Area.class, Node.class, Nodes.class, NodeInfo.class });
 
+        this.clientBuilder = clientBuilder;
         this.sceneMapper = new DeviceToSceneMapper(this);
     }
 
@@ -131,7 +140,7 @@ public class IsyBridgeHandler extends BaseBridgeHandler implements InsteonClient
         String usernameAndPassword = config.getUser() + ":" + config.getPassword();
         String authorizationHeaderValue = "Basic "
                 + java.util.Base64.getEncoder().encodeToString(usernameAndPassword.getBytes());
-        this.isyClient = new IsyRestClient(config.getIpAddress(), authorizationHeaderValue, xStream);
+        this.isyClient = new IsyRestClient(config.getIpAddress(), authorizationHeaderValue, xStream, clientBuilder);
         ISYModelChangeListener modelListener = new IsyListener();
         this.eventSubscriber = new IsyWebSocketSubscription(config.getIpAddress(), authorizationHeaderValue,
                 modelListener, xStream);

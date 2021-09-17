@@ -18,6 +18,10 @@ public class InsteonAddress implements NodeAddress {
 
     public InsteonAddress(String address) {
         String[] addressParts = address.split(" ");
+        if (addressParts.length < 3) {
+            mDeviceId = UNSPECIFIED_DEVICE_ID;
+            return;
+        }
         mByte1 = addressParts[0];
         mByte2 = addressParts[1];
         mByte3 = addressParts[2];

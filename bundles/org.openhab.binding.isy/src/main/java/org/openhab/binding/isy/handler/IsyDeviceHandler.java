@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
 import org.openhab.binding.isy.config.IsyInsteonDeviceConfiguration;
 import org.openhab.binding.isy.internal.NodeAddress;
 import org.openhab.binding.isy.internal.OHIsyClient;
@@ -72,6 +73,9 @@ public class IsyDeviceHandler extends AbtractIsyThingHandler {
         if ("ST".equals(control)) {
             State newState;
             int newIntState = Integer.parseInt(action);
+            String channelID = mDeviceidToChannelMap.get(deviceId);
+            if (channelID == null)
+                channelID = "";
             if (newIntState == 0) {
                 newState = OnOffType.OFF;
             } else if (newIntState == 255) {
@@ -79,7 +83,7 @@ public class IsyDeviceHandler extends AbtractIsyThingHandler {
             } else {
                 newState = IsyDeviceHandler.statusValuetoState(newIntState);
             }
-            updateState(mDeviceidToChannelMap.get(deviceId), newState);
+            updateState(channelID, newState);
         } else if (mControlUID != null && ("DOF".equals(control) || "DFOF".equals(control) || "DON".equals(control)
                 || "DFON".equals(control))) {
             if (deviceId == 1) {
@@ -99,7 +103,7 @@ public class IsyDeviceHandler extends AbtractIsyThingHandler {
     }
 
     @Override
-    public void handleCommand(ChannelUID channelUID, Command command) {
+    public void handleCommand(@Nullable ChannelUID channelUID, Command command) {
         logger.debug("handle command, channel: {}, command: {}", channelUID, command);
 
         IsyBridgeHandler bridgeHandler = getBridgeHandler();
